@@ -54,7 +54,8 @@ public class WebSampleTest implements IAbstractTest {
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testModelSpecs() {
         WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(160));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
@@ -79,8 +80,8 @@ public class WebSampleTest implements IAbstractTest {
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testCompareModels() {
         WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(160));
-        webDriver.manage().timeouts().implicitlyWait((Duration.ofSeconds(160)));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
@@ -109,7 +110,8 @@ public class WebSampleTest implements IAbstractTest {
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testNewsSearch() {
         WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(160));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
@@ -136,7 +138,8 @@ public class WebSampleTest implements IAbstractTest {
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testBrandGroup() {
         WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(160));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
