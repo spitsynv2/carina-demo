@@ -80,6 +80,7 @@ public class WebSampleTest implements IAbstractTest {
     public void testCompareModels() {
         WebDriver webDriver = getDriver();
         webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(160));
+        webDriver.manage().timeouts().implicitlyWait((Duration.ofSeconds(160)));
 
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
