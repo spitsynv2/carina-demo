@@ -48,7 +48,7 @@ import com.zebrunner.carina.core.registrar.tag.TestPriority;
  */
 public class WebSampleTest implements IAbstractTest {
 
-    private WebDriver webDriver = getDriver();
+    private final WebDriver webDriver = getDriver();
 
     @BeforeTest
     public void prepareDriver(){
