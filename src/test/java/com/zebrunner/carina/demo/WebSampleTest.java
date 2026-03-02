@@ -48,10 +48,11 @@ import com.zebrunner.carina.core.registrar.tag.TestPriority;
  */
 public class WebSampleTest implements IAbstractTest {
 
-    private final WebDriver webDriver = getDriver();
+    private WebDriver webDriver;
 
     @BeforeTest
     public void prepareDriver(){
+        webDriver = getDriver();
         webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180));
         webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(180));
     }
