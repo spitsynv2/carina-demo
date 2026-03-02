@@ -15,7 +15,6 @@
  *******************************************************************************/
 package com.zebrunner.carina.demo;
 
-import java.sql.Driver;
 import java.time.Duration;
 import java.util.List;
 
@@ -26,6 +25,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -48,15 +48,19 @@ import com.zebrunner.carina.core.registrar.tag.TestPriority;
  */
 public class WebSampleTest implements IAbstractTest {
 
-    @Test
+    private WebDriver webDriver = getDriver();
+
+    @BeforeTest
+    public void prepareDriver(){
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180));
+        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(180));
+    }
+
+    @Test(timeOut = 180_000)
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testModelSpecs() {
-        WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
@@ -74,15 +78,11 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(timeOut = 180_000)
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P1)
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testCompareModels() {
-        WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
@@ -105,14 +105,10 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(timeOut = 180_000)
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testNewsSearch() {
-        WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
@@ -132,15 +128,11 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertAll();
     }
 
-    @Test()
+    @Test(timeOut = 180_000)
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testBrandGroup() {
-        WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-
         HomePageBase homePage = initPage(webDriver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
