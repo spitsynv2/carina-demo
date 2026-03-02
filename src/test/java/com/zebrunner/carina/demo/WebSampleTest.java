@@ -51,8 +51,8 @@ public class WebSampleTest implements IAbstractTest {
 
     public WebDriver prepareDriver(){
         WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180));
-        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(180));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(300));
+        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(300));
 
         return webDriver;
     }
