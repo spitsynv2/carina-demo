@@ -48,13 +48,13 @@ import com.zebrunner.carina.core.registrar.tag.TestPriority;
  */
 public class WebSampleTest implements IAbstractTest {
 
-    private WebDriver webDriver;
 
-    @BeforeTest
-    public void prepareDriver(){
-        webDriver = getDriver();
+    public WebDriver prepareDriver(){
+        WebDriver webDriver = getDriver();
         webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180));
         webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(180));
+
+        return webDriver;
     }
 
     @Test()
@@ -62,7 +62,7 @@ public class WebSampleTest implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testModelSpecs() {
-        HomePageBase homePage = initPage(webDriver, HomePageBase.class);
+        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
@@ -84,7 +84,7 @@ public class WebSampleTest implements IAbstractTest {
     @TestPriority(Priority.P1)
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testCompareModels() {
-        HomePageBase homePage = initPage(webDriver, HomePageBase.class);
+        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         // Open model compare page
@@ -110,7 +110,7 @@ public class WebSampleTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testNewsSearch() {
-        HomePageBase homePage = initPage(webDriver, HomePageBase.class);
+        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
@@ -134,7 +134,7 @@ public class WebSampleTest implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testBrandGroup() {
-        HomePageBase homePage = initPage(webDriver, HomePageBase.class);
+        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
