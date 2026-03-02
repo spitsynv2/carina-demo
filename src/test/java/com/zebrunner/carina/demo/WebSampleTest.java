@@ -56,7 +56,7 @@ public class WebSampleTest implements IAbstractTest {
         webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(180));
     }
 
-    @Test(timeOut = 180_000)
+    @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
@@ -78,7 +78,7 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertAll();
     }
 
-    @Test(timeOut = 180_000)
+    @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P1)
     @TestLabel(name = "feature", value = {"web", "acceptance"})
@@ -105,7 +105,7 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertAll();
     }
 
-    @Test(timeOut = 180_000)
+    @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testNewsSearch() {
@@ -128,7 +128,7 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertAll();
     }
 
-    @Test(timeOut = 180_000)
+    @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
