@@ -23,6 +23,7 @@ import com.zebrunner.carina.demo.gui.components.NewsItem;
 import com.zebrunner.carina.demo.gui.components.compare.ModelSpecs;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -51,8 +52,9 @@ public class WebSampleTest implements IAbstractTest {
 
     public WebDriver prepareDriver(){
         WebDriver webDriver = getDriver();
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(300));
-        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(300));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
+        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(120));
+        webDriver.manage().window().setSize(new Dimension(1920,1080));
 
         return webDriver;
     }
@@ -62,7 +64,8 @@ public class WebSampleTest implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testModelSpecs() {
-        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
+        WebDriver driver = prepareDriver();
+        HomePageBase homePage = initPage(driver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
@@ -84,7 +87,8 @@ public class WebSampleTest implements IAbstractTest {
     @TestPriority(Priority.P1)
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testCompareModels() {
-        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
+        WebDriver driver = prepareDriver();
+        HomePageBase homePage = initPage(driver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         // Open model compare page
@@ -110,7 +114,8 @@ public class WebSampleTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testNewsSearch() {
-        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
+        WebDriver driver = prepareDriver();
+        HomePageBase homePage = initPage(driver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
@@ -134,7 +139,8 @@ public class WebSampleTest implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testBrandGroup() {
-        HomePageBase homePage = initPage(prepareDriver(), HomePageBase.class);
+        WebDriver driver = prepareDriver();
+        HomePageBase homePage = initPage(driver, HomePageBase.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
