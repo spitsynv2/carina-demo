@@ -25,9 +25,10 @@ public class IOSSafariTest implements IAbstractTest, IMobileUtils {
 
     @Test
     public void safariTest() {
+//        getDriver().get("https://www.google.com/");
         SaucePage saucePage = new SaucePage(getDriver());
         saucePage.openURL("http://saucelabs.com/test/guinea-pig");
-        
+
         saucePage.verifyElementText();
         saucePage.sendComment();
     }

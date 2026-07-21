@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Carina Demo Tests - Under Armour Buy Flow (iOS Safari)" verbose="1" parallel="tests">
+
+	<parameter name="suiteOwner" value="qpsdemo" />
+	<parameter name="jenkinsJobName" value="UnderArmour-Buy-Flow-Demo-Test" />
+	<parameter name="jenkinsJobType" value="ios" />
+	<parameter name="jenkinsEmail" value="demo@zebrunner.com" />
+	<parameter name="jenkinsEnvironments" value="DEMO" />
+	<parameter name="jenkinsAutoScreenshot" value="true" />
+
+	<test name="Under Armour guest buy flow">
+		<classes>
+			<class name="com.zebrunner.carina.demo.UnderArmourBuyFlowTest" />
+		</classes>
+	</test>
+
+</suite>
