@@ -162,4 +162,31 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>e3s-nexus</id>
+			<activation>
+				<property>
+					<name>env.E3S_URL</name>
+				</property>
+			</activation>
+			<repositories>
+				<repository>
+					<id>e3s-nexus</id>
+					<url>http://internal-vspitsyn-e3s-dev-nexus-alb-2101808084.us-west-2.elb.amazonaws.com</url>
+					<releases><enabled>true</enabled></releases>
+					<snapshots><enabled>true</enabled></snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>e3s-nexus</id>
+					<url>http://internal-vspitsyn-e3s-dev-nexus-alb-2101808084.us-west-2.elb.amazonaws.com</url>
+					<releases><enabled>true</enabled></releases>
+					<snapshots><enabled>true</enabled></snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
 </project>
