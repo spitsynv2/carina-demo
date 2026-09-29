@@ -15,21 +15,25 @@
  *******************************************************************************/
 package com.zebrunner.carina.demo;
 
+import java.lang.invoke.MethodHandles;
 import java.util.TreeMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 
 public class ContainerEnvVarsTest implements IAbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Test()
     @MethodOwner(owner = "qpsdemo")
     public void printContainerEnvVars() {
-        System.out.println("Container environment variables:");
+        LOGGER.info("Container environment variables:");
         new TreeMap<>(System.getenv()).entrySet()
-                .forEach(entry -> System.out.printf("%s=%s%n", entry.getKey(), entry.getValue()));
+                .forEach(entry -> LOGGER.info("{}={}", entry.getKey(), entry.getValue()));
     }
 
 }
